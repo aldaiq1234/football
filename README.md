@@ -28,9 +28,9 @@ Examples of queries that are included in `queries.sql`:
 
 *(Full SQL queries are located in `queries.sql'.)*
 
-####  Основные таблицы футбольной базы
+####  The main tables of the football database
 
-Для анализа игроков, клубов и матчей база данных содержит следующие основные таблицы:
+To analyze players, clubs, and matches, the database contains the following main tables:
 
 | Таблица            | Основные поля                                         | Связи                                               |
 |-------------------|------------------------------------------------------|---------------------------------------------------|
