@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  superset_db:
+    image: mysql:8
+    container_name: superset_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: superset
+      MYSQL_USER: superset
+      MYSQL_PASSWORD: superset
+    ports:
+      - "3307:3306"
+    volumes:
+      - superset_mysql_data:/var/lib/mysql
+
+  superset_app:
+    image: apache/superset
+    container_name: superset_app
+    environment:
+      SUPERSET_SECRET_KEY: "mysecretkey123"
+      ADMIN_USERNAME: "admin"
+      ADMIN_FIRST_NAME: "Admin"
+      ADMIN_LAST_NAME: "User"
+      ADMIN_EMAIL: "admin@superset.com"
+      ADMIN_PASSWORD: "admin"
+      DATABASE_DIALECT: "mysql"
+      DATABASE_HOST: "superset_db"
+      DATABASE_PORT: "3306"
+      DATABASE_USER: "superset"
+      DATABASE_PASSWORD: "superset"
+      DATABASE_DB: "superset"
+    ports:
+      - "8090:8088"
+    depends_on:
+      - superset_db
+
+volumes:
+  superset_mysql_data:
